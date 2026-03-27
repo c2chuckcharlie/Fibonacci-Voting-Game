@@ -1,0 +1,5 @@
+{
+  "name": "Fibonacci Voting Game",
+  "description": "A collaborative voting and scoring system using Fibonacci numbers to reflect preference strength and strategic investment.",
+  "requestFramePermissions": []
+}

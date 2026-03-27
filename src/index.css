@@ -1,0 +1,106 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Noto Sans TC", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "Space Mono", ui-monospace, SFMono-Regular, monospace;
+
+  --color-bg: #0a0e1a;
+  --color-surface: #111827;
+  --color-surface2: #1a2234;
+  --color-border: #1e2d45;
+  --color-accent: #00d4ff;
+  --color-accent2: #ff6b35;
+  --color-accent3: #7c3aed;
+  --color-gold: #fbbf24;
+  --color-text-muted: #64748b;
+  --color-text-dim: #94a3b8;
+
+  --radius-xl: 12px;
+}
+
+@layer base {
+  body {
+    @apply bg-bg text-slate-200 min-h-screen overflow-x-hidden font-sans;
+  }
+
+  /* Background grid effect */
+  body::before {
+    content: '';
+    @apply fixed inset-0 pointer-events-none z-0;
+    background-image:
+      linear-gradient(rgba(0,212,255,0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0,212,255,0.03) 1px, transparent 1px);
+    background-size: 40px 40px;
+  }
+}
+
+@layer components {
+  .card {
+    @apply bg-surface border border-border rounded-xl p-5;
+  }
+
+  .btn {
+    @apply px-6 py-3 rounded-lg cursor-pointer font-semibold transition-all duration-200 flex items-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+
+  .btn-primary {
+    @apply bg-linear-to-br from-accent to-[#0099cc] text-black shadow-[0_4px_20px_rgba(0,212,255,0.3)] hover:-translate-y-0.5 hover:shadow-[0_6px_28px_rgba(0,212,255,0.4)];
+  }
+
+  .btn-ghost {
+    @apply bg-surface2 border border-border text-text-dim hover:bg-surface hover:text-white;
+  }
+
+  .btn-danger {
+    @apply bg-red-500/15 border border-red-500/30 text-red-400 hover:bg-red-500/25;
+  }
+
+  .btn-success {
+    @apply bg-linear-to-br from-emerald-600 to-emerald-700 text-white shadow-[0_4px_20px_rgba(5,150,105,0.3)];
+  }
+
+  .form-input {
+    @apply w-full px-4 py-2.5 bg-surface2 border border-border rounded-lg text-white text-sm outline-hidden focus:border-accent transition-colors;
+  }
+
+  .fib-btn {
+    @apply min-w-[52px] h-[52px] rounded-lg border-2 border-transparent cursor-pointer font-mono text-base font-bold transition-all duration-150 flex flex-col items-center justify-center hover:-translate-y-1 hover:scale-105 active:scale-95;
+  }
+
+  .fib-btn.selected {
+    @apply ring-4 ring-white/30 shadow-[0_4px_16px_rgba(0,0,0,0.4)] -translate-y-0.5 scale-105;
+  }
+
+  .fib-btn.disabled {
+    @apply opacity-30 cursor-not-allowed hover:translate-y-0 hover:scale-100;
+  }
+}
+
+/* Custom Fibonacci Colors */
+.fib-1 { background: #1e3a5f; color: #60a5fa; border-color: #60a5fa; }
+.fib-2 { background: #1a3d5c; color: #38bdf8; border-color: #38bdf8; }
+.fib-3 { background: #163d4d; color: #22d3ee; border-color: #22d3ee; }
+.fib-5 { background: #14473a; color: #34d399; border-color: #34d399; }
+.fib-8 { background: #1a4731; color: #4ade80; border-color: #4ade80; }
+.fib-13 { background: #3d3a0e; color: #facc15; border-color: #facc15; }
+.fib-21 { background: #3d280a; color: #fb923c; border-color: #fb923c; }
+.fib-34 { background: #3d150a; color: #f87171; border-color: #f87171; }
+
+.fib-1.selected { background: #60a5fa; color: #000; }
+.fib-2.selected { background: #38bdf8; color: #000; }
+.fib-3.selected { background: #22d3ee; color: #000; }
+.fib-5.selected { background: #34d399; color: #000; }
+.fib-8.selected { background: #4ade80; color: #000; }
+.fib-13.selected { background: #facc15; color: #000; }
+.fib-21.selected { background: #fb923c; color: #000; }
+.fib-34.selected { background: #f87171; color: #000; }
+
+@keyframes toastIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.toast-animation {
+  animation: toastIn 0.3s ease;
+}
+
